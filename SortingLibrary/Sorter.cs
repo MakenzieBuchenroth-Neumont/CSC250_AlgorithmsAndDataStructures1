@@ -24,13 +24,14 @@ Understanding the bubble sort
 [1, 2, 4, 3, 5]
 [1, 2, 3, 4, 5]
 
+Verbal Breakdown:
 Until nothing has changed
 	Iterate over all elements of array except the last one
 		Compare current element to next element
 			if current > next
 				swap
 
-
+Pseudo-Code:
 sort(array numbers)
 	int numberSwapped = 0
 	int currentNumber = 0
