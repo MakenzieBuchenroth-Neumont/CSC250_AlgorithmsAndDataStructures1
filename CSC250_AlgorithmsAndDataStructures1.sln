@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "..\TestProject\TestProject.csproj", "{F5BBDD0B-2894-422D-A8BC-9CE94D76CC80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingLibrary", "SortingLibrary\SortingLibrary.csproj", "{AD56E4C9-D1A5-4A5C-9652-A8BC127AF5EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortingLibrary", "SortingLibrary\SortingLibrary.csproj", "{AD56E4C9-D1A5-4A5C-9652-A8BC127AF5EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Isomorphs", "Isomorphs\Isomorphs.csproj", "{022BA366-4599-4841-823B-E1F8268F5CF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AD56E4C9-D1A5-4A5C-9652-A8BC127AF5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD56E4C9-D1A5-4A5C-9652-A8BC127AF5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD56E4C9-D1A5-4A5C-9652-A8BC127AF5EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{022BA366-4599-4841-823B-E1F8268F5CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{022BA366-4599-4841-823B-E1F8268F5CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{022BA366-4599-4841-823B-E1F8268F5CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{022BA366-4599-4841-823B-E1F8268F5CF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

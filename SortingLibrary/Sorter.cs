@@ -1,83 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SortingLibrary {
 	public class Sorter<T> where T : IComparable<T> {
-		public T bubbleSort(T numbers) {
-
+		#region BubbleSort
+		public static int[] bubbleSort(int[] numbers) {
+			bool hasChanged = false;
+			do {
+				hasChanged = false;
+				for (int i = 0; i < (numbers.Count() - 1); i++) {
+					if (numbers[i] > numbers[i + 1]) {
+						numbers = swapNumbers(numbers, i, i + 1);
+						hasChanged = true;
+					}
+				}
+			}
+			while (hasChanged);
 			return numbers;
 		}
+
+		public static int[] swapNumbers(int[] array, int indexa, int indexb) {
+			int placeholder = array[indexa];
+			array[indexa] = array[indexb];
+			array[indexb] = placeholder;
+
+			return array;
+		}
+		#endregion
+
+		#region SelectionSort
+		// big-o complexity: n^2, because two nested for loops.
+		public static int[] selectionSort(int[] numbers) {
+			for (int i = 0; i < numbers.Count(); i++) {
+				numbers = selectionCompare(i, numbers);
+			}
+			return numbers;
+		}
+
+		public static int[] selectionCompare(int i, int[] numbers) {
+			int selectedValue = numbers[i];
+			for (int j = i + 1; j < numbers.Count(); j++) {
+				if (selectedValue > numbers[j]) {
+					int placeholder = numbers[j];
+					numbers[j] = selectedValue;
+					selectedValue = placeholder;
+				}
+			}
+			numbers[i] = selectedValue;
+			return numbers;
+		}
+		#endregion
+
+		#region InsertionSort
+		// big-o complexity: n^2, because of two nested for loops
+		public static int[] insertionSort(int[] numbers) {
+			for (int i = 1; i < numbers.Count(); i++) {
+				int insertionValue = numbers[i];
+				insertionCompare(numbers, insertionValue, i);
+			}
+			return numbers;
+		}
+
+		public static int[] insertionCompare(int[] numbers, int insertionValue, int i) {
+			for (int j = i - 1; j >= 0; j--) {
+				if (numbers[j] > insertionValue) {
+					numbers[j + 1] = numbers[j];
+					if (j == 0)
+						numbers[j] = insertionValue;
+				}
+				else {
+					numbers[j + 1] = insertionValue;
+					break;
+				}
+			}
+			return numbers;
+		}
+		#endregion
 	}
 }
-
-/*
-Understanding the bubble sort
-	input: unsorted array (ordered linear collection)
-	output: sorted array (ordered linear collection)
-
-[2, 4, 1, 5, 3]
-[2, 1, 4, 5, 3]
-[2, 1, 4, 3, 5]
-[1, 2, 4, 3, 5]
-[1, 2, 3, 4, 5]
-
-Verbal Breakdown:
-Until nothing has changed
-	Iterate over all elements of array except the last one
-		Compare current element to next element
-			if current > next
-				swap
-
-Pseudo-Code:
-sort(array numbers)
-	int numberSwapped = 0
-	int currentNumber = 0
-	do
-		numberSwapped = 0
-		for int i = 0; i < numbers.length - 1; i++
-			if numbers[i] > numbers[i + 1]
-				currentNumber = numbers[i]
-				numbers[i] = numbers[i + 1]
-				numbers[i + 1] = currentNumber
-				numberSwapped++
-	while numberSwapped > 0
-
-	n + 13n^2 is actually (n^2)
-
-bool version ::
-sort(array numbers)
-	bool hasChanged = false;
-	int currentNumber = 0
-	do
-		hasChanged = false
-		for int i = 0; i < numbers.length - 1; i++
-			if numbers[i] > numbers[i + 1]
-				swap(numbers, numbers[i], numbers[i + 1])
-				hasChanged = true
-	while hasChanged
-
-swap(array, indexa, indexb) {
-	placeholder = array[indexa]
-	numbers[i] = numbers[i + 1]
-	numbers[i + 1] = currentNumber
-}
-
-	:: is still n^2
-
-Cases:
-	Test_Sort_HappyPath -
-		INPUT:			 [5, 3, 4, 1, 2]
-		EXPECTED OUTPUT: [1, 2, 3, 4, 5]
-		Assert.IsTrue(sort(input).SequenceEqual(expectedOutput))
-	Test_Sort_NullCollection -
-		INPUT: null
-		[ExpectedException(typeof(NullReferenceException))]
-	
-	Test_Swap_HappyPath - 
-		INPUT: array = [5, 3, 4, 1, 2], indexa = 3, indexb = 4
-		EXPECTED OUTPUT: [5, 3, 4, 2, 1]
-		Assert.IsTrue(swap(array, indexa, indexb).SequenceEqual(expectedOutput))
- */
